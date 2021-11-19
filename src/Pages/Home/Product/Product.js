@@ -7,7 +7,6 @@ import Typography from '@mui/material/Typography';
 import CardMedia from '@mui/material/CardMedia';
 import {NavLink } from 'react-router-dom';
 
-
 const Product = (props) => {
     const{_id,img,name,description,price} = props.product;
     return (

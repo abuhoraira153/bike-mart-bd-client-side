@@ -8,7 +8,8 @@ initializeFirebase()
 const useFirebase = () =>{
     const [user, setUser] = useState({})
     const [isLoading, setIsLoading] = useState(true)
-    const [authError, setAuthError] = useState('')
+    const [authError, setAuthError] = useState('');
+    const [admin, setAdmin] = useState(false)
 
     const auth = getAuth();
 
@@ -61,6 +62,12 @@ const useFirebase = () =>{
           return () => unsubscribed;
     },[])
 
+    useEffect(()=>{
+      fetch(`https://hidden-wildwood-78614.herokuapp.com/users/${user.email}`)
+      .then(res => res.json())
+      .then(data => setAdmin(data.admin))
+    },[user.email])
+
     const logOut = () =>{
       setIsLoading(true)
         signOut(auth)
@@ -76,7 +83,7 @@ const useFirebase = () =>{
     const saveUser = (email, displayName) =>{
       const user = {email, displayName}
       console.log(user)
-      fetch('http://localhost:5000/users', {
+      fetch('https://hidden-wildwood-78614.herokuapp.com/users', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'
@@ -88,6 +95,7 @@ const useFirebase = () =>{
 
     return{
         user,
+        admin,
         isLoading,
         registerUser,
         loginUser,

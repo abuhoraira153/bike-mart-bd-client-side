@@ -1,20 +1,50 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import { CardContent, CardMedia, Grid, Typography, Card, Container } from '@mui/material';
+import useAuth from './../../hooks/useAuth';
 
 const Purchase = () => {
     const{_id} = useParams()
     const [product, setProduct] = useState({})
-    useEffect(()=>{
-        fetch(`http://localhost:5000/products/${_id}`)
+    const {user} = useAuth()
+        useEffect(()=>{
+        fetch(`https://hidden-wildwood-78614.herokuapp.com/products/${_id}`)
         .then(res => res.json())
         .then(data => setProduct(data))
     },[])
     
     return (
-        <div>
-            <h2>This is booking:{_id}</h2>
-            <p>Name : {product.name}</p>
-        </div>
+        <Container>
+            <Grid container spacing={2}>
+        <Grid item >
+        <Card sx={{ width:'380px', height:'550px' }}>
+            <CardMedia
+        component="img"
+        height="194"
+        image={product.img}
+        alt="Paella dish"
+      />
+      <CardContent>
+        <Typography variant="h5" component="div">
+          {product.name}
+        </Typography>
+        <Typography sx={{ mb: 1.5 }}>
+          Price : {product.price}
+        </Typography>
+        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+          {product.description}
+        </Typography>
+      </CardContent>
+    </Card>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Typography>
+              {user.displayName}
+          </Typography>
+        </Grid>
+      </Grid>
+            
+        </Container>
     );
 };
 

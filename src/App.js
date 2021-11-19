@@ -9,6 +9,8 @@ import Register from './Pages/Login/Register/Register';
 import AuthProvider from './contexts/AuthProvider/AuthProvider';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
+import Explore from './Pages/Explore/Explore';
+import Reviews from './Pages/Reviews/Reviews';
 
 
 
@@ -25,11 +27,17 @@ function App() {
             <Route path = "/home">
               <Home></Home>
             </Route>
+            <Route path = "/explore">
+              <Explore></Explore>
+            </Route>
             <PrivateRoute path="/purchase/:_id">
               <Purchase></Purchase>
             </PrivateRoute>
             <Route path = "/addService">
               <AddService></AddService>
+            </Route>
+            <Route path="/reviews">
+              <Reviews></Reviews>
             </Route>
             <PrivateRoute path="/dashboard">
               <Dashboard></Dashboard>
