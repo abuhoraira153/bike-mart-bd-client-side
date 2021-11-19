@@ -28,12 +28,15 @@ const Navigation = () => {
           <NavLink style={{textDecoration:'none',color:'white'}} to="#home">
           <Button color="inherit">Home</Button>
           </NavLink>
-          <NavLink style={{textDecoration:'none',color:'white'}} to="#products">
+          <NavLink style={{textDecoration:'none',color:'white'}} to="/products">
           <Button color="inherit"><p href="#products">Products</p></Button>
           </NavLink>
           <NavLink style={{textDecoration:'none',color:'white'}} to="/explore">
           <Button color="inherit">Explore</Button>
-          <NavLink style={{textDecoration:'none',color:'white'}} to="/reviews">
+          <NavLink style={{textDecoration:'none',color:'white'}} to="#reviews">
+          <Button color="inherit">About Us</Button>
+          </NavLink>
+          <NavLink style={{textDecoration:'none',color:'white'}} to="#reviews">
           <Button color="inherit">Reviews</Button>
           </NavLink>
           </NavLink>
